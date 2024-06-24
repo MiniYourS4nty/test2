@@ -7,7 +7,7 @@ const port = process.env.PORT || 3000;
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-const botUsername = 'Test'; // Replace with your desired bot username
+const botUsername = 'SEB44S'; // Replace with your desired bot username
 const botServer = '104.128.55.48'; // Replace with the Minecraft server address
 const botPort = 25571; // Replace with the Minecraft server port
 
@@ -23,8 +23,7 @@ function startBot() {
         });
         bot.on('spawn', () => {
             console.log('Bot spawned.');
-            bot.chat('/login holaxd');
-            // bot.chat('/login Medellin1!');
+            bot.chat('/login Medellin1!');
             bot.setControlState('jump', true);
             setTimeout(() => {
                 bot.chat('Hola :D');
