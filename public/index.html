@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Minecraft Bot Control</title>
+</head>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    min-height: 100%;
+  }
+
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background: #000;
+    background-image: radial-gradient(ellipse at 0% 0%, #003b4d, #003b4d00 60%),
+      radial-gradient(ellipse at 20% 10%, #003b4d, #003b4d00 40%),
+      radial-gradient(ellipse at 70% 40%, #054a49, #054a4900 60%),
+      radial-gradient(ellipse at 80% 20%, #054a49, #053a4900 40%),
+      radial-gradient(ellipse at 100% 0%, #054a49, #054a4900 70%);
+    border-bottom: 1px solid #333;
+  }
+
+  div {
+    width: 80%;
+    background: transparent;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    padding: 20px;
+  }
+
+  button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 50px;
+    --border-size: 3px;
+    --border-angle: 0turn;
+    background-image: conic-gradient(from var(--border-angle), #213, #112 50%, #213), conic-gradient(from var(--border-angle), transparent 20%, #08f, #f03);
+    background-size: calc(100% - (var(--border-size) * 2)) calc(100% - (var(--border-size) * 2)), cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    -webkit-animation: bg-spin 3s linear infinite;
+    animation: bg-spin 3s linear infinite;
+  }
+
+  @-webkit-keyframes bg-spin {
+    to {
+      --border-angle: 1turn;
+    }
+  }
+
+  @keyframes bg-spin {
+    to {
+      --border-angle: 1turn;
+    }
+  }
+
+  @property --border-angle {
+    syntax: "<angle>";
+    inherits: true;
+    initial-value: 0turn;
+  }
+</style>
+
+<body>
+
+  <div>
+    <button id="startButton">Start YourS4nty</button>
+    <button id="stopButton">Stop YourS4nty</button>
+  </div>
+
+  <script>
+    const startButton = document.getElementById('startButton');
+    const startButton2 = document.getElementById('startButton2');
+    const stopButton = document.getElementById('stopButton');
+    const stopButton2 = document.getElementById('stopButton2');
+
+    startButton.addEventListener('click', () => {
+      fetch('/start')
+        .then(response => response.text())
+        .then(data => console.log(data));
+    });
+
+    stopButton.addEventListener('click', () => {
+      fetch('/stop')
+        .then(response => response.text())
+        .then(data => console.log(data));
+    });
+
+  </script>
+</body>
+
+</html>
